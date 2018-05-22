@@ -1,0 +1,17 @@
+<body>
+  <div class="login-page">
+    <div class="form">
+      <form #userLoginForm="ngForm" (ngSubmit)="onLogin(userLoginForm); userLoginForm.resetForm()">
+          <p class="message">Login to continue... </p>
+
+        <div class="text-danger" *ngIf="UserName.invalid && UserName.touched &&  UserName.errors.required">Username is required!</div>
+        <input type="text" name="UserName" placeholder="Username" #UserName="ngModel" [(ngModel)]="loginCreds.UserName" required>
+        
+        <div class="text-danger" *ngIf="Password.invalid && Password.touched &&  Password.errors.required">Password is required!</div>
+        <input type="password" name="Password" placeholder="Password" #Password="ngModel" [(ngModel)]="loginCreds.Password" required>
+        
+        <button type="submit"[disabled]=userLoginForm.invalid>Login</button>
+      </form>
+    </div>
+  </div>
+</body>

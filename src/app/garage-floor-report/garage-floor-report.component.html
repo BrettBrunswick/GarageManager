@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h1 class="display-3"> 
+    Garage {{garage}}, Floor {{floor}} Report</h1>
+  <p class="lead">A report of parking spaces on Garage {{garage}}, Floor {{floor}}.
+  <h4>Total parking spaces: {{numberSpaces}}</h4>
+  <h5>Open parking spaces: {{numberSpacesOpen}}</h5>
+  <h5>Out parking spaces: {{numberSpacesOut}}</h5>
+  <h5>In Use parking spaces: {{numberSpacesInUse}}</h5>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Garage ID</th>
+        <th scope="col">Space Number</th>
+        <th scope="col">Floor</th>
+        <th scope="col">Status</th>
+        <th scope="col">Change State</th>
+      </tr>
+    </thead>
+      <tr *ngFor="let space of spaces">
+        <td scope="row">{{space.garage.id}}</td>
+        <td>{{space.id}}</td>
+        <td>{{space.floor}}</td>
+        <td>{{space.status}}</td>
+        <td *ngIf="space.status == 'open' || space.status == 'out' "><button type="button" class="btn btn-primary" (click)="changeState(space.id)">Change State</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
